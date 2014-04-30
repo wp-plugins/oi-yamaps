@@ -3,7 +3,7 @@ Contributors: Isaenko Alexei
 Tags: coordinates, maps, geolocation, location, placemark, yandex
 Requires at least: 3.2
 Tested up to: 3.9
-Stable tag: 1.0
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html 
 
@@ -43,3 +43,5 @@ API loads not on every page, but only when it's needed!
 
 = 1.0 =
 * Initial release
+= 1.1 =
+* Maps ID numbers fixed

@@ -4,19 +4,12 @@ Plugin Name: Oi Ya.Maps
 Plugin URI: http://www.easywebsite.ru/plugins/oi-ya-maps/
 Description: It just add the maps on your pages using Yandex.Maps. You can use shortcode and type the address or coordinates.
 Author: Alexei Isaenko
-Version: 1.0
+Version: 1.1
 Author URI: http://www.sh14.ru
 This plugin is Copyright 2012 Sh14.ru. All rights reserved.
 */
 
 // Date: 25.04.2014 - make code as a single plugin from other big project
-
-add_filter('edit_form_advanced', 'oi-ya-map-editor');
-
-function oi_ya_map_options()
-{
-
-}
 
 class Ya_map_connected // check, if maps packege is loaded
 {
@@ -61,26 +54,20 @@ extract( shortcode_atts( array(
 		$coordinates = $coordinates[1].', '.$coordinates[0];
 		// http://api.yandex.ru/maps/doc/jsapi/2.x/ref/reference/option.presetStorage.xml - разные метки
 	$output = '
+	<div id="YMaps_'.$id.'" class="YMaps" style="width:'.$width.';height:'.$height.'"></div>
 	<script type="text/javascript">
-		// as soon as API loaded and DOM is ready, make init
 		ymaps.ready(init);
 
 		function init () {
-		// make map with id
 			var myMap = new ymaps.Map("YMaps_'.$id.'", {
-					// set center and zoom of a map
 					center: ['.$coordinates.'],
 					zoom: '.$zoom.'
 				});
 				myMap.controls
-					// scale button
 					.add("zoomControl")
-					// map types
 					.add("typeSelector")
-					// standart buttons
 					.add("mapTools");
 					
-				// set a placemark
 				myPlacemark = new ymaps.Placemark(['.$coordinates.'], {
 					balloonContentHeader: "'.$header.'",
 					balloonContentBody: "'.$body.'",
@@ -90,16 +77,15 @@ extract( shortcode_atts( array(
 				{ preset: "'.$placemark.'" }
 				);
 
-				myMap.geoObjects.add(myPlacemark);	// add a placemark to the map
+				myMap.geoObjects.add(myPlacemark);
 		}
 	</script>
-	<div id="YMaps_'.$id.'" class="YMaps" style="width:'.$width.';height:'.$height.'"></div>
 	';
 
-		if(Ya_map_connected::$id==0) // if no maps on a page...
+		Ya_map_connected::$id++; // set new id
+		if($id==0) // if no maps on a page...
 		{
-			Ya_map_connected::$id++; // set new id value and load API...
-			return '<script type="text/javascript" src="http://api-maps.yandex.ru/2.0/?load=package.full&lang=ru-RU"></script>'.$output; // ...and show the map
+			return '<script type="text/javascript" src="http://api-maps.yandex.ru/2.0/?load=package.full&lang=ru-RU"></script>'."\n".$output; // ...and show the map
 		}else{return $output;} // show the map
 	}
 }
