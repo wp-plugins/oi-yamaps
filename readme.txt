@@ -29,7 +29,7 @@ You able to use only one parameter - address or coordinates:
 
 API loads not on every page, but only when it's needed! 
 
-allow_url_fopen in php.ini should be on - allow_url_fopen = 1
+If you use "address" instead of "coordinates" "allow_url_fopen" in php.ini should be enabled - allow_url_fopen = 1
 
 == Installation ==
 
