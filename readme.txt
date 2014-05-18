@@ -29,6 +29,8 @@ You able to use only one parameter - address or coordinates:
 
 API loads not on every page, but only when it's needed! 
 
+allow_url_fopen in php.ini should be on - allow_url_fopen = 1
+
 == Installation ==
 
 1. Upload `oi-ya-maps` folder to the `/wp-content/plugins/` directory.
