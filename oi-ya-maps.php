@@ -4,12 +4,13 @@ Plugin Name: Oi Ya.Maps
 Plugin URI: http://www.easywebsite.ru/plugins/oi-ya-maps/
 Description: It just add the maps on your pages using Yandex.Maps. You can use shortcode and type the address or coordinates.
 Author: Alexei Isaenko
-Version: 1.1
+Version: 1.2
 Author URI: http://www.sh14.ru
 This plugin is Copyright 2012 Sh14.ru. All rights reserved.
 */
 
 // Date: 25.04.2014 - make code as a single plugin from other big project
+// Date: 20.05.2014 - Stretchy Icons support added  
 
 class Ya_map_connected // check, if maps packege is loaded
 {
@@ -37,12 +38,15 @@ extract( shortcode_atts( array(
 		'body'			=> '',
 		'footer'		=> '',
 		'hint'			=> '',
-		'placemark'		=> 'twirl#greenIcon',
 		'coordinates'	=> '',
 		'height'		=> '400px',
 		'width'			=> '100%',
-		'zoom'		=> '16',
-	), $atts ) );
+		'zoom'			=> '16',
+		'iconcontent'	=> '',
+		'placemark'		=> "twirl#blueDotIcon",
+	), $atts, 'showyamap' ) );
+	if($placemark==''){$placemark = 'twirl#blueDotIcon';}
+	if($iconcontent<>''){$placemark = str_replace('Icon','StretchyIcon',str_replace('Dot','',$placemark));}
 	$id = Ya_map_connected::$id; // set id of map block
 	if($coordinates=='') // get coordinates, if it's not set
 	{
@@ -68,7 +72,8 @@ extract( shortcode_atts( array(
 					.add("typeSelector")
 					.add("mapTools");
 					
-				myPlacemark = new ymaps.Placemark(['.$coordinates.'], {
+				myPlacemark_'.$id.' = new ymaps.Placemark(['.$coordinates.'], {
+					iconContent: "'.$iconcontent.'",
 					balloonContentHeader: "'.$header.'",
 					balloonContentBody: "'.$body.'",
 					balloonContentFooter: "'.$footer.'",
@@ -77,7 +82,7 @@ extract( shortcode_atts( array(
 				{ preset: "'.$placemark.'" }
 				);
 
-				myMap.geoObjects.add(myPlacemark);
+				myMap.geoObjects.add(myPlacemark_'.$id.');
 		}
 	</script>
 	';
