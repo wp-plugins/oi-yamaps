@@ -3,7 +3,7 @@ Contributors: Isaenko Alexei
 Tags: coordinates, maps, geolocation, location, placemark, yandex
 Requires at least: 3.2
 Tested up to: 3.9.1
-Stable tag: 1.2
+Stable tag: 2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html 
 
@@ -62,6 +62,10 @@ Use simple twirl icons "twirl#nightIcon" or twirl icons with dot "twirl#nightDot
 
 == Changelog ==
 
+= 2.1 =
+* fix: fix html in placemark
+* new: center parametr added
+* new: curl enable check
 = 2.0 =
 * fix: Some fixes.
 * new: Option page added.
