@@ -14,7 +14,7 @@ This plugin is Copyright 2012 Sh14.ru. All rights reserved.
 // Date: 21.07.2014 - 2.0 release
 // Date: 22.07.2014 - 2.1 fix html in placemark; center parametr added; curl enable check
 
-include plugin_basename( dirname( __FILE__ ) ) . '/include/init.php';
+include "include/init.php";
 add_action('init', 'oi_yamaps');
 function oi_yamaps() // localization
 {
