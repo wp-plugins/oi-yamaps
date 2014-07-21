@@ -11,7 +11,8 @@ This plugin is Copyright 2012 Sh14.ru. All rights reserved.
 
 // Date: 25.04.2014 - make code as a single plugin from other big project
 // Date: 20.05.2014 - Stretchy Icons support added  
-// Date: 21.07.2014 - 20.0 release
+// Date: 21.07.2014 - 2.0 release
+// Date: 22.07.2014 - 2.1 fix html in placemark; center parametr added; curl enable check
 
 include "include/init.php";
 add_action('init', 'oi_yamaps');
@@ -53,17 +54,20 @@ class Ya_map_connected // check, if maps packege is loaded
         return self::$pid; // return actual value
     }
 }
+function _isCurl(){
+    return function_exists('curl_version');
+}
 
 function coordinates($address) // get coordinates of a given address
 {
 	$address = urlencode($address);
 	$url = "http://geocode-maps.yandex.ru/1.x/?geocode=".$address;
-	$callback = @file_get_contents($url);
-	if($callback == false)
+	if(!_isCurl)
 	{
-		print '<p class="error">'.__('To show the map cURL must be enabled.', 'oiyamaps').'</p>';
+		print __('To show the map cURL must be enabled.', 'oiyamaps');
 	}else
 	{
+		$callback = @file_get_contents($url);
 		$content = $callback;
 		preg_match('/<pos>(.*?)<\/pos>/',$content,$point);
 		return implode(',',array_reverse(split(' ',trim(strip_tags($point[1])))));
@@ -78,6 +82,7 @@ function showyamap( $atts, $content ) // show block with the map on a page
 	}
 	extract( shortcode_atts( array(
 			'address'		=> '',
+			'center'		=> '',
 			'header'		=> '',
 			'body'			=> '',
 			'footer'		=> '',
@@ -110,6 +115,17 @@ function showyamap( $atts, $content ) // show block with the map on a page
 				$coordinates = $latitude . ',' . $longitude; // split theme
 			}
 		}
+		$center = trim($center);
+		if($center<>'') // if we have a center, then...
+		{
+			if(!is_int($center[0])) // if it's not coordinates, then...
+			{
+				$center = coordinates($center); // take coordinates
+			}
+		}else
+		{
+			$center = $coordinates;
+		}
 	}
 	
 	if($coordinates<>'')
@@ -118,6 +134,18 @@ function showyamap( $atts, $content ) // show block with the map on a page
 		if($author_link==1)
 			$author_link = '<a class="ymaps-copyright-agreement-black author_link" href="http://easywebsite.ru/">' . __('Oi Ya.Maps', 'oi_ya_maps') . '</a>';
 		//$content = '/* '.$content.' */';
+		
+		// delete all not necessary simbols from $content
+		$record = false;
+		$out7 = '';
+		for($i=0;$i<strlen($content);$i++)
+		{
+			if($content[$i]=='['){$record = true;}
+			if($record==true){$out7 .= $content[$i];}
+			if($content[$i]==']'){$record = false;}
+		}
+		$content = $out7;
+
 		$output = '
 		<div id="YMaps_'.$id.'" class="YMaps" style="width:'.$width.';height:'.$height.'">'. $author_link .'</div>
 		<script type="text/javascript">
@@ -125,7 +153,7 @@ function showyamap( $atts, $content ) // show block with the map on a page
 
 			function init () {
 				var myMap = new ymaps.Map("YMaps_'.$id.'", {
-						center: ['.$coordinates.'],
+						center: ['.$center.'],
 						zoom: '.$zoom.'
 					});
 					myMap.controls
@@ -144,7 +172,7 @@ function showyamap( $atts, $content ) // show block with the map on a page
 					);
 
 					myMap.geoObjects.add(myPlacemark_'.$id.');
-				'.do_shortcode(strip_tags($content)).'
+				'.do_shortcode(($content)).'
 			}
 		</script>
 		';
