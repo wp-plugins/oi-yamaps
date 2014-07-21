@@ -12,8 +12,8 @@ It just add the maps on your pages using Yandex.Maps. You can use shortcode and 
 == Description ==
 
 This plugin uses Yandex.Map API service to provide maps on your site.
-You can point coordinates or address of some place, and you'll get the map on your page.
-You can add so many maps on one page as you want.
+You can point coordinates or address of some places, and you'll get the map on your page.
+You can add so many maps on one page and so many placemarks on a page as you want.
 Use shortcode with parameters: [showyamap address="" header="" body="" footer="" hint="" iconcontent="" placemark="" coordinates="" height="" width="" zoom=""]
 
 Default values:
@@ -26,6 +26,15 @@ zoom		= 16
 
 You able to use only one parameter - address or coordinates:
 [showyamap address="Moscow, Birulevskaya st., 1"]
+
+Placemarks
+
+You able to use many placemarks. Just write it inside content part of shortcode.
+
+[showyamap address="Moscow, Birulevskaya, 1/2"]
+	[placemark address="Moscow, Birulevskaya, 1"]
+[/showyamap]
+First placemark will be taken from showyamap shortcode, second from placemark shortcode.
 
 API loads not on every page, but only when it's needed! 
 
@@ -53,6 +62,11 @@ Use simple twirl icons "twirl#nightIcon" or twirl icons with dot "twirl#nightDot
 
 == Changelog ==
 
+= 2.0 =
+* fix: Some fixes.
+* new: Option page added.
+* new: Language support added.
+* new: Multi Placemarks support added.
 = 1.2 =
 * fix: Placemark ID numbers fixed
 * new: iconcontent attribute added - Stretchy Icons support
