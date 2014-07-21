@@ -1,0 +1,224 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Oi Ya.Maps v1.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2014-07-21 13:27:11+0000\n"
+"Last-Translator: admin <a@a.aa>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n%100/10==1 ? 2 : n%10==1 ? 0 : (n+9)%10>3 ? 2 : 1;\n"
+"X-Generator: CSL v1.x\n"
+"X-Poedit-Language: Russian\n"
+"X-Poedit-Country: RUSSIA\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: \n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#: include/init.php:20
+#, php-format
+#@ oiyamaps
+msgid "Check out the <a href=\"options-general.php?page=oiym-setting-admin\">option page</a> of Oi Ya.Maps plugin. | <a href=\"%1$s\">Hide Notice</a>"
+msgstr "Зайдите на <a href=\"options-general.php?page=oiym-setting-admin\">страницу настроек</a> плагина Oi Ya.Maps. | <a href=\"%1$s\">Спрятать сообщение</a>"
+
+#: include/options.php:6
+#@ oiyamaps
+msgid "Map height"
+msgstr "Высота карты"
+
+#: include/options.php:10
+#@ oiyamaps
+msgid "Use px or %. 400px by default"
+msgstr "Используйте px или %. По умолчанию 400px"
+
+#: include/options.php:13
+#@ oiyamaps
+msgid "Map width"
+msgstr "Ширина карты"
+
+#: include/options.php:17
+#@ oiyamaps
+msgid "Use px or %. 100% by default"
+msgstr "Используйте px или %. По умолчанию 100%"
+
+#: include/options.php:20
+#@ oiyamaps
+msgid "Map zoom"
+msgstr "Масштаб карты"
+
+#: include/options.php:24
+#@ oiyamaps
+msgid "16 by default"
+msgstr "по умолчанию 16"
+
+#: include/options.php:27
+#@ oiyamaps
+msgid "Default placemark"
+msgstr "Стандартная метка"
+
+#: include/options.php:31
+#@ oiyamaps
+msgid "You can use different placemarks. Checkout this page - <a target=\"_blank\" href=\"http://api.yandex.ru/maps/doc/jsapi/2.x/ref/reference/option.presetStorage.xml\">http://api.yandex.ru/maps/...</a>"
+msgstr "Вы можете использовать различные метки. Посетите эту страницу - <a target=\"_blank\" href=\"http://api.yandex.ru/maps/doc/jsapi/2.x/ref/reference/option.presetStorage.xml\">http://api.yandex.ru/maps/...</a>"
+
+#: include/options.php:34
+#@ oiyamaps
+msgid "Show link to the plugin's page"
+msgstr "Отображать ссылку на страницу плагина"
+
+#: include/options.php:38
+#@ oiyamaps
+msgid "It is just a link to the plugin page in corner of the map."
+msgstr "Это просто ссылка на страницу плагина в углу карты."
+
+#: include/options.php:129
+#: include/options.php:147
+#@ oiyamaps
+msgid "Oi Ya.Maps Settings"
+msgstr "Настройки Oi Ya.Maps"
+
+#: include/options.php:130
+#: oi-ya-maps.php:110
+#@ oiyamaps
+#@ oi_ya_maps
+msgid "Oi Ya.Maps"
+msgstr ""
+
+#: include/options.php:202
+#@ oiyamaps
+msgid "Map defaults"
+msgstr "Настройки по умолчанию"
+
+#: include/options.php:206
+#@ oiyamaps
+msgid "Info"
+msgstr "Информация"
+
+#: include/options.php:240
+#@ oiyamaps
+msgid "Default parameters"
+msgstr "Параметры по умолчанию"
+
+#: include/options.php:244
+#@ oiyamaps
+msgid "Without parameters"
+msgstr "Без параметров"
+
+#: include/options.php:245
+#@ oiyamaps
+msgid "in this case you should use custom fields in the post with added map. Fields names should be "
+msgstr "В этом случае используются произвольные поля публикации в которую вставлена карта. Имена полей должны быить "
+
+#: include/options.php:245
+#@ oiyamaps
+msgid "and"
+msgstr "и "
+
+#: include/options.php:246
+#@ oiyamaps
+msgid "With parameters"
+msgstr "С параметрами"
+
+#: include/options.php:247
+#@ oiyamaps
+msgid "it is uses Yandex server to know coordinates by address."
+msgstr "Используется сервер Яндекса, что бы узнать координаты по указанному адресу."
+
+#: include/options.php:248
+#@ oiyamaps
+msgid "in this case you will see the place pointed by <b>coordinates</b> instead of address, because <b>\"coordinates\"</b> has priority."
+msgstr "В этом случае вы увидите метку указанную через параметра <b>coordinates</b>, а не параметр address, так как координаты имеют больший приоритет."
+
+#: include/options.php:249
+#@ oiyamaps
+msgid "Placemarks"
+msgstr "Метки"
+
+#: include/options.php:250
+#@ oiyamaps
+msgid "You able to use many placemarks. Just write it inside content part of shortcode."
+msgstr "Вы можете использовать несколько меток. Разместите шорткод меток внутри части контента шорткода карт."
+
+#: include/options.php:256
+#@ oiyamaps
+msgid "First placemark will be taken from custom fields, second from placemark shortcode."
+msgstr "Первая метка будет взята из произвольных полей, вторая из шорткода метки."
+
+#: include/options.php:262
+#@ oiyamaps
+msgid "First placemark will be taken from showyamap shortcode, second from placemark shortcode."
+msgstr "Первая метка будет взята из параметров карты, вторая из параметров метки."
+
+#: include/options.php:263
+#@ oiyamaps
+msgid "Parameters"
+msgstr "Параметры"
+
+#: include/options.php:266
+#: include/options.php:282
+#@ oiyamaps
+msgid "Place address"
+msgstr "Адрес метки"
+
+#: include/options.php:267
+#: include/options.php:283
+#@ oiyamaps
+msgid "Baloon header"
+msgstr "Заголовок балона"
+
+#: include/options.php:268
+#: include/options.php:284
+#@ oiyamaps
+msgid "Baloon body content"
+msgstr "Контент балона"
+
+#: include/options.php:269
+#: include/options.php:285
+#@ oiyamaps
+msgid "Baloon footer content"
+msgstr "Подвал балона"
+
+#: include/options.php:270
+#: include/options.php:286
+#@ oiyamaps
+msgid "Text on hover placemark"
+msgstr "Текст при наведении на метку"
+
+#: include/options.php:271
+#: include/options.php:287
+#@ oiyamaps
+msgid "Place coordinates"
+msgstr "Координаты метки"
+
+#: include/options.php:272
+#@ oiyamaps
+msgid "Height of map"
+msgstr "Высота карты"
+
+#: include/options.php:273
+#@ oiyamaps
+msgid "Width of map"
+msgstr "Ширина карты"
+
+#: include/options.php:274
+#@ oiyamaps
+msgid "Zoom of map"
+msgstr "Масштаб карты"
+
+#: include/options.php:275
+#: include/options.php:288
+#@ oiyamaps
+msgid "Icon content for stretch icons"
+msgstr "Контент резиновой метки"
+
+#: include/options.php:276
+#: include/options.php:289
+#@ oiyamaps
+msgid "Placemark type"
+msgstr "Тип метки"
+
