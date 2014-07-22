@@ -7,38 +7,16 @@ Stable tag: 2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html 
 
-It just add the maps on your pages using Yandex.Maps. You can use shortcode and point the address or coordinates.
+The plugin allows you to use Yandex.Maps on your site pages and put the placemarks on the map. Without an API key.
 
 == Description ==
 
-This plugin uses Yandex.Map API service to provide maps on your site.
+This plugin uses <a target="_blank" href="http://maps.yandex.com/">Yandex.Map</a> API service to provide maps on your site.
 You can point coordinates or address of some places, and you'll get the map on your page.
-You can add so many maps on one page and so many placemarks on a page as you want.
-Use shortcode with parameters: [showyamap address="" header="" body="" footer="" hint="" iconcontent="" placemark="" coordinates="" height="" width="" zoom=""]
-
-Default values:
-
-placemark	= twirl#blueDotIcon
-height		= 400px
-width		= 100%
-zoom		= 16
-
-
-You able to use only one parameter - address or coordinates:
-[showyamap address="Moscow, Birulevskaya st., 1"]
-
-Placemarks
-
-You able to use many placemarks. Just write it inside content part of shortcode.
-
-[showyamap address="Moscow, Birulevskaya, 1/2"]
-	[placemark address="Moscow, Birulevskaya, 1"]
-[/showyamap]
-First placemark will be taken from showyamap shortcode, second from placemark shortcode.
+You can add so many maps on one page and so many placemarks on a map as you want.
+Just use shortcode with parameters.
 
 API loads not on every page, but only when it's needed! 
-
-If you use "address" instead of "coordinates" "allow_url_fopen" in php.ini should be enabled - allow_url_fopen = 1
 
 == Installation ==
 
