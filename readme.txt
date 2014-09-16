@@ -1,9 +1,9 @@
-=== Oi Ya.Maps ===
+=== Oi Yandex.Maps for WordPress ===
 Contributors: Isaenko Alexei
 Tags: coordinates, maps, geolocation, location, placemark, yandex
 Requires at least: 3.2
-Tested up to: 3.9.1
-Stable tag: 2.1
+Tested up to: 4.0
+Stable tag: 2.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html 
 
@@ -37,9 +37,16 @@ Use simple twirl icons "twirl#nightIcon" or twirl icons with dot "twirl#nightDot
 
 1. Shortcode in admin panel.
 2. Map on a front page.
+3. Shortcode button.
+4. Visual shortcode editor.
 
 == Changelog ==
 
+= 2.2 =
+* fix: fixed error when coordinates used
+* fix: fixed error whith map center
+* new: added shortcode button
+* new: localization: russian language added
 = 2.1 =
 * fix: fix html in placemark
 * new: center parametr added

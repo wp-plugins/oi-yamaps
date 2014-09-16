@@ -1,6 +1,6 @@
 <?
 /*
-Plugin Name: Oi Ya.Maps
+Plugin Name: Oi Yandex.Maps for WordPress
 Plugin URI: http://www.easywebsite.ru/shop/oi-ya-maps
 Description: It just add the maps on your pages using Yandex.Maps. You can use shortcode and type the address or coordinates with many placemarks.
 Author: Alexei Isaenko
@@ -13,12 +13,15 @@ This plugin is Copyright 2012 Sh14.ru. All rights reserved.
 // Date: 20.05.2014 - Stretchy Icons support added  
 // Date: 21.07.2014 - 2.0 release
 // Date: 22.07.2014 - 2.1 fix html in placemark; center parametr added; curl enable check
+// Date: 16.09.2014 - 2.2 fix error when coordinates used; added shortcode button; localization
 
 include "include/init.php";
 add_action('init', 'oi_yamaps');
 function oi_yamaps() // localization
 {
 	load_plugin_textdomain( 'oiyamaps', false, plugin_basename( dirname( __FILE__ ) ) . '/lang' );
+	add_action('admin_footer',  'oi_yamaps_thickbox');
+	add_action('media_buttons','oi_yamaps_button',11);
 }
 // do something on plugin activation
 register_activation_hook( __FILE__, 'oi_yamaps_activation' );
@@ -94,14 +97,15 @@ function showyamap( $atts, $content ) // show block with the map on a page
 			'iconcontent'	=> '',
 			'placemark'		=> $placemark,
 		), $atts, 'showyamap' ) );
+	$output = '';
 	foreach(oi_yamaps_defaults() as $k=>$v) // set empty variables from defaults
 	{
 		if($$k==''&&$k<>'author_link'){$$k = $v;}
-	}
+	} 
 	// if content for placemark given, make placemark stretch
 	if($iconcontent<>''){$placemark = str_replace('Icon','StretchyIcon',str_replace('Dot','',$placemark));}
 	$id = Ya_map_connected::$id; // set id of map block
-	if($coordinates=='') // get coordinates, if it's not set
+	if( $coordinates == '' ) // if coordinates not set...
 	{
 		if($address<>'') // if we have an address, then...
 		{
@@ -116,23 +120,29 @@ function showyamap( $atts, $content ) // show block with the map on a page
 			}
 		}
 		$center = trim($center);
-		if($center<>'') // if we have a center, then...
+		if( $center <> '' ) // if we have a center, then...
 		{
-			if(!is_int($center[0])) // if it's not coordinates, then...
+			if( !is_int( $center[0] ) ) // if it's not coordinates, then...
 			{
-				$center = coordinates($center); // take coordinates
+				$center = coordinates( $center ); // get coordinates
 			}
-		}else
+		}else // if center not set...
 		{
-			$center = $coordinates;
+			$center = $coordinates; // it is equal to coordinates
+		}
+	}else //  if we have coordinates, then...
+	{
+		if( trim($center) == '' ) // set center if only it is empty
+		{
+			$center = $coordinates; // it is equal to coordinates
 		}
 	}
 	
-	if($coordinates<>'')
+	if( $coordinates <> '' )
 	{
 		$body = str_replace('"',"'",$body);
 		if($author_link==1)
-			$author_link = '<a class="ymaps-copyright-agreement-black author_link" href="http://easywebsite.ru/">' . __('Oi Ya.Maps', 'oi_ya_maps') . '</a>';
+			$author_link = '<a class="ymaps-copyright-agreement-black author_link" href="http://easywebsite.ru/">' . __('OYM', 'oi_ya_maps') . '</a>';
 		//$content = '/* '.$content.' */';
 		
 		// delete all not necessary simbols from $content
@@ -146,7 +156,7 @@ function showyamap( $atts, $content ) // show block with the map on a page
 		}
 		$content = $out7;
 
-		$output = '
+		$output .= '
 		<div id="YMaps_'.$id.'" class="YMaps" style="width:'.$width.';height:'.$height.'">'. $author_link .'</div>
 		<script type="text/javascript">
 			ymaps.ready(init);

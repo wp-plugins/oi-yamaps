@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Oi Ya.Maps v1.2\n"
+"Project-Id-Version: Oi Yandex.Maps for WordPress v2.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2014-07-21 13:27:11+0000\n"
+"PO-Revision-Date: 2014-09-16 22:53:39+0000\n"
 "Last-Translator: admin <a@a.aa>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -20,13 +20,8 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Textdomain-Support: yes"
 
-#: include/init.php:20
-#, php-format
-#@ oiyamaps
-msgid "Check out the <a href=\"options-general.php?page=oiym-setting-admin\">option page</a> of Oi Ya.Maps plugin. | <a href=\"%1$s\">Hide Notice</a>"
-msgstr "Зайдите на <a href=\"options-general.php?page=oiym-setting-admin\">страницу настроек</a> плагина Oi Ya.Maps. | <a href=\"%1$s\">Спрятать сообщение</a>"
-
 #: include/options.php:6
+#: include/thickbox.php:42
 #@ oiyamaps
 msgid "Map height"
 msgstr "Высота карты"
@@ -37,6 +32,7 @@ msgid "Use px or %. 400px by default"
 msgstr "Используйте px или %. По умолчанию 400px"
 
 #: include/options.php:13
+#: include/thickbox.php:47
 #@ oiyamaps
 msgid "Map width"
 msgstr "Ширина карты"
@@ -47,6 +43,7 @@ msgid "Use px or %. 100% by default"
 msgstr "Используйте px или %. По умолчанию 100%"
 
 #: include/options.php:20
+#: include/thickbox.php:52
 #@ oiyamaps
 msgid "Map zoom"
 msgstr "Масштаб карты"
@@ -75,19 +72,6 @@ msgstr "Отображать ссылку на страницу плагина"
 #@ oiyamaps
 msgid "It is just a link to the plugin page in corner of the map."
 msgstr "Это просто ссылка на страницу плагина в углу карты."
-
-#: include/options.php:129
-#: include/options.php:147
-#@ oiyamaps
-msgid "Oi Ya.Maps Settings"
-msgstr "Настройки Oi Ya.Maps"
-
-#: include/options.php:130
-#: oi-ya-maps.php:110
-#@ oiyamaps
-#@ oi_ya_maps
-msgid "Oi Ya.Maps"
-msgstr ""
 
 #: include/options.php:202
 #@ oiyamaps
@@ -167,12 +151,14 @@ msgstr "Адрес метки"
 
 #: include/options.php:267
 #: include/options.php:283
+#: include/thickbox.php:26
 #@ oiyamaps
 msgid "Baloon header"
 msgstr "Заголовок балона"
 
 #: include/options.php:268
 #: include/options.php:284
+#: include/thickbox.php:30
 #@ oiyamaps
 msgid "Baloon body content"
 msgstr "Контент балона"
@@ -221,4 +207,94 @@ msgstr "Контент резиновой метки"
 #@ oiyamaps
 msgid "Placemark type"
 msgstr "Тип метки"
+
+#: include/thickbox.php:5
+#@ oiyamaps
+msgid "Yandex Map"
+msgstr "Яндекс карта"
+
+#: include/thickbox.php:13
+#@ oiyamaps
+msgid "Address"
+msgstr "Адрес"
+
+#: include/thickbox.php:17
+#@ oiyamaps
+msgid "Coordinates"
+msgstr "Координаты"
+
+#: include/thickbox.php:21
+#@ oiyamaps
+msgid "Map center"
+msgstr "Центр карты"
+
+#: include/thickbox.php:22
+#@ oiyamaps
+msgid "It should be a coordinates, like 55.754736,37.620875"
+msgstr "Это должны быть координаты, например  55.754736,37.620875"
+
+#: include/thickbox.php:22
+#@ oiyamaps
+msgid "By default center = coordinates"
+msgstr "По умолчанию center = coordinates"
+
+#: include/thickbox.php:34
+#@ oiyamaps
+msgid "Baloon footer"
+msgstr "Подвал балона"
+
+#: include/thickbox.php:38
+#@ oiyamaps
+msgid "Placemark hint"
+msgstr "Подсказка метки"
+
+#: include/thickbox.php:43
+#: include/thickbox.php:48
+#: include/thickbox.php:53
+#: include/thickbox.php:62
+#@ oiyamaps
+msgid "Default: "
+msgstr "По умолчанию: "
+
+#: include/thickbox.php:57
+#@ oiyamaps
+msgid "Plcamark label"
+msgstr "Заголовок метки"
+
+#: include/thickbox.php:61
+#@ oiyamaps
+msgid "Plcamark type"
+msgstr "Тип метки"
+
+#: include/thickbox.php:115
+#@ default
+msgid "Cancel"
+msgstr ""
+
+#: oi-ya-maps.php:70
+#@ oiyamaps
+msgid "To show the map cURL must be enabled."
+msgstr "Для работы карт должен быть включен модуль cURL "
+
+#: oi-ya-maps.php:145
+#@ oi_ya_maps
+msgid "OYM"
+msgstr ""
+
+#: include/init.php:21
+#, php-format
+#@ oiyamaps
+msgid "Check out the <a href=\"%1$s\">option page</a> of Oi Yandex.Maps for WordPress plugin. | <a href=\"%2$s\">Hide Notice</a>"
+msgstr "Проверьте <a href=\"%1$s\">страницу настроек</a> плагина Яндекс Карт. | <a href=\"%2$s\">Спрятать уведомление</a>"
+
+#: include/options.php:129
+#: include/options.php:147
+#@ oiyamaps
+msgid "Oi Yandex Maps Settings"
+msgstr "Настройки Яндекс Карт"
+
+#: include/options.php:130
+#@ oiyamaps
+msgid "Oi Yandex Maps"
+msgstr "Яндекс Карты"
 

@@ -126,8 +126,8 @@ class OIYM_SettingsPage
     {
         // This page will be under "Settings"
         add_options_page(
-            __('Oi Ya.Maps Settings','oiyamaps'), 
-            __('Oi Ya.Maps','oiyamaps'), 
+            __('Oi Yandex Maps Settings','oiyamaps'), 
+            __('Oi Yandex Maps','oiyamaps'), 
             'manage_options', 
             'oiym-setting-admin', 
             array( $this, 'settings_page' )
@@ -144,7 +144,7 @@ class OIYM_SettingsPage
         ?>
         <div class="wrap">
             <? screen_icon(); ?>
-            <h2><?_e('Oi Ya.Maps Settings','oiyamaps')?></h2>           
+            <h2><?_e('Oi Yandex Maps Settings','oiyamaps')?></h2>           
             <form method="post" action="options.php">
             <?
                 // This prints out all hidden setting fields
