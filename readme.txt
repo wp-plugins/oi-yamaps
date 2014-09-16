@@ -14,7 +14,8 @@ The plugin allows you to use Yandex.Maps on your site pages and put the placemar
 This plugin uses <a target="_blank" href="http://maps.yandex.com/">Yandex.Map</a> API service to provide maps on your site.
 You can point coordinates or address of some places, and you'll get the map on your page.
 You can add so many maps on one page and so many placemarks on a map as you want.
-Just use shortcode with parameters.
+Just use shortcode with parameters. 
+Now you can use visual shortcode editor.
 
 API loads not on every page, but only when it's needed! 
 
