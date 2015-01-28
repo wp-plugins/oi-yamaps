@@ -101,7 +101,7 @@ function oi_yamaps_thickbox() // окно редактирования шорт�
 	';
 	$out .= 
 		$out1.
-		$out2.'window.send_to_editor("[showyamap " '.$out3.'+ "]");';
+		$out2.'window.send_to_editor("[showyamap " '.$out3.'+ "/]");';
 	$out .= '
 	}
 </script>';

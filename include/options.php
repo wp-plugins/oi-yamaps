@@ -142,9 +142,13 @@ class OIYM_SettingsPage
         // Set class property
         $this->options = (get_option( OIYM_PREFIX.'options' , oi_yamaps_defaults() ) );
         ?>
+<style>
+.block-left {float: left;width: 50%;}
+</style>
         <div class="wrap">
             <? screen_icon(); ?>
-            <h2><?_e('Oi Yandex Maps Settings','oiyamaps')?></h2>           
+            <h2><?_e('Oi Yandex Maps Settings','oiyamaps')?></h2>
+			<div class="block-left">
             <form method="post" action="options.php">
             <?
                 // This prints out all hidden setting fields
@@ -154,6 +158,14 @@ class OIYM_SettingsPage
                 submit_button(); 
             ?>
             </form>
+			</div>
+			<div class="block-left">
+			<h4><?_e('Oi Yandex.Maps for WordPress Needs Your Support','oiyamaps')?></h4>
+<p><?_e('If you like this plugin, you can support me and make a donation. But even if you don`t, you can use the plugin without any restrictions.','oiyamaps')?></p>
+<p><?_e('Your donation will help encourage and support the plugin`s continued development and better user support.','oiyamaps')?></p>
+<iframe frameborder="0" allowtransparency="true" scrolling="no" src="https://money.yandex.ru/embed/shop.xml?account=41001112308777&quickpay=shop&payment-type-choice=on&writer=seller&targets=Oi+Ya.Maps+for+WordPress+donation&targets-hint=&default-sum=350&button-text=03&mail=on&successURL=successURL=http%3A%2F%2Fwww.easywebsite.ru%2Fshop%2Fplugins-wordpress%2Foi-ya-maps%3Fmsg%3Dthanks" width="450" height="198"></iframe>
+
+			</div>
         </div>
         <?
     }

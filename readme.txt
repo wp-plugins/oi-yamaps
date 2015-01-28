@@ -3,7 +3,7 @@ Contributors: Isaenko Alexei
 Tags: coordinates, maps, geolocation, location, placemark, yandex
 Requires at least: 3.2
 Tested up to: 4.0
-Stable tag: 2.2
+Stable tag: 2.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html 
 
@@ -18,6 +18,10 @@ Just use shortcode with parameters.
 Now you can use visual shortcode editor.
 
 API loads not on every page, but only when it's needed! 
+
+<h4>Oi Yandex.Maps for WordPress Needs Your Support</h4>
+If you like this plugin, you can support me and <a target="_blank" href="http://maps.yandex.com/">make a donation</a>. But even if you don't, you can use the plugin without any restrictions.
+Your donation will help encourage and support the plugin's continued development and better user support.
 
 == Installation ==
 
@@ -34,6 +38,9 @@ Just add the "iconcontent" attribute [showyamap address="Moscow, Birulevskaya st
 
 Use simple twirl icons "twirl#nightIcon" or twirl icons with dot "twirl#nightDotIcon". If you use "iconcontent" then icon automaticaly turns to stretchy.
 
+= Russian description =
+http://www.easywebsite.ru/shop/plugins-wordpress/oi-ya-maps
+
  == Screenshots == 
 
 1. Shortcode in admin panel.
@@ -43,6 +50,12 @@ Use simple twirl icons "twirl#nightIcon" or twirl icons with dot "twirl#nightDot
 
 == Changelog ==
 
+= 2.3 =
+* fix showmap coordinates missing;
+* fix: fixed error when showmap doesn't contain coordinates;
+* new: now you can turn off map controls
+* new: added custom placemark image
+* new: map center depends on placemarks
 = 2.2 =
 * fix: fixed error when coordinates used
 * fix: fixed error whith map center

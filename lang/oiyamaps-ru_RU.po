@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Oi Yandex.Maps for WordPress v2.1\n"
+"Project-Id-Version: Oi Yandex.Maps for WordPress v2.3\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2014-09-16 22:53:39+0000\n"
+"PO-Revision-Date: 2014-12-08 20:54:10+0000\n"
 "Last-Translator: admin <a@a.aa>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -73,137 +73,137 @@ msgstr "Отображать ссылку на страницу плагина"
 msgid "It is just a link to the plugin page in corner of the map."
 msgstr "Это просто ссылка на страницу плагина в углу карты."
 
-#: include/options.php:202
+#: include/options.php:214
 #@ oiyamaps
 msgid "Map defaults"
 msgstr "Настройки по умолчанию"
 
-#: include/options.php:206
+#: include/options.php:218
 #@ oiyamaps
 msgid "Info"
 msgstr "Информация"
 
-#: include/options.php:240
+#: include/options.php:252
 #@ oiyamaps
 msgid "Default parameters"
 msgstr "Параметры по умолчанию"
 
-#: include/options.php:244
+#: include/options.php:256
 #@ oiyamaps
 msgid "Without parameters"
 msgstr "Без параметров"
 
-#: include/options.php:245
+#: include/options.php:257
 #@ oiyamaps
 msgid "in this case you should use custom fields in the post with added map. Fields names should be "
 msgstr "В этом случае используются произвольные поля публикации в которую вставлена карта. Имена полей должны быить "
 
-#: include/options.php:245
+#: include/options.php:257
 #@ oiyamaps
 msgid "and"
 msgstr "и "
 
-#: include/options.php:246
+#: include/options.php:258
 #@ oiyamaps
 msgid "With parameters"
 msgstr "С параметрами"
 
-#: include/options.php:247
+#: include/options.php:259
 #@ oiyamaps
 msgid "it is uses Yandex server to know coordinates by address."
 msgstr "Используется сервер Яндекса, что бы узнать координаты по указанному адресу."
 
-#: include/options.php:248
+#: include/options.php:260
 #@ oiyamaps
 msgid "in this case you will see the place pointed by <b>coordinates</b> instead of address, because <b>\"coordinates\"</b> has priority."
 msgstr "В этом случае вы увидите метку указанную через параметра <b>coordinates</b>, а не параметр address, так как координаты имеют больший приоритет."
 
-#: include/options.php:249
+#: include/options.php:261
 #@ oiyamaps
 msgid "Placemarks"
 msgstr "Метки"
 
-#: include/options.php:250
+#: include/options.php:262
 #@ oiyamaps
 msgid "You able to use many placemarks. Just write it inside content part of shortcode."
 msgstr "Вы можете использовать несколько меток. Разместите шорткод меток внутри части контента шорткода карт."
 
-#: include/options.php:256
+#: include/options.php:268
 #@ oiyamaps
 msgid "First placemark will be taken from custom fields, second from placemark shortcode."
 msgstr "Первая метка будет взята из произвольных полей, вторая из шорткода метки."
 
-#: include/options.php:262
+#: include/options.php:274
 #@ oiyamaps
 msgid "First placemark will be taken from showyamap shortcode, second from placemark shortcode."
 msgstr "Первая метка будет взята из параметров карты, вторая из параметров метки."
 
-#: include/options.php:263
+#: include/options.php:275
 #@ oiyamaps
 msgid "Parameters"
 msgstr "Параметры"
 
-#: include/options.php:266
-#: include/options.php:282
+#: include/options.php:278
+#: include/options.php:294
 #@ oiyamaps
 msgid "Place address"
 msgstr "Адрес метки"
 
-#: include/options.php:267
-#: include/options.php:283
+#: include/options.php:279
+#: include/options.php:295
 #: include/thickbox.php:26
 #@ oiyamaps
 msgid "Baloon header"
 msgstr "Заголовок балона"
 
-#: include/options.php:268
-#: include/options.php:284
+#: include/options.php:280
+#: include/options.php:296
 #: include/thickbox.php:30
 #@ oiyamaps
 msgid "Baloon body content"
 msgstr "Контент балона"
 
-#: include/options.php:269
-#: include/options.php:285
+#: include/options.php:281
+#: include/options.php:297
 #@ oiyamaps
 msgid "Baloon footer content"
 msgstr "Подвал балона"
 
-#: include/options.php:270
-#: include/options.php:286
+#: include/options.php:282
+#: include/options.php:298
 #@ oiyamaps
 msgid "Text on hover placemark"
 msgstr "Текст при наведении на метку"
 
-#: include/options.php:271
-#: include/options.php:287
+#: include/options.php:283
+#: include/options.php:299
 #@ oiyamaps
 msgid "Place coordinates"
 msgstr "Координаты метки"
 
-#: include/options.php:272
+#: include/options.php:284
 #@ oiyamaps
 msgid "Height of map"
 msgstr "Высота карты"
 
-#: include/options.php:273
+#: include/options.php:285
 #@ oiyamaps
 msgid "Width of map"
 msgstr "Ширина карты"
 
-#: include/options.php:274
+#: include/options.php:286
 #@ oiyamaps
 msgid "Zoom of map"
 msgstr "Масштаб карты"
 
-#: include/options.php:275
-#: include/options.php:288
+#: include/options.php:287
+#: include/options.php:300
 #@ oiyamaps
 msgid "Icon content for stretch icons"
 msgstr "Контент резиновой метки"
 
-#: include/options.php:276
-#: include/options.php:289
+#: include/options.php:288
+#: include/options.php:301
 #@ oiyamaps
 msgid "Placemark type"
 msgstr "Тип метки"
@@ -271,12 +271,12 @@ msgstr "Тип метки"
 msgid "Cancel"
 msgstr ""
 
-#: oi-ya-maps.php:70
+#: oi-ya-maps.php:71
 #@ oiyamaps
 msgid "To show the map cURL must be enabled."
 msgstr "Для работы карт должен быть включен модуль cURL "
 
-#: oi-ya-maps.php:145
+#: oi-ya-maps.php:225
 #@ oi_ya_maps
 msgid "OYM"
 msgstr ""
@@ -288,7 +288,7 @@ msgid "Check out the <a href=\"%1$s\">option page</a> of Oi Yandex.Maps for Word
 msgstr "Проверьте <a href=\"%1$s\">страницу настроек</a> плагина Яндекс Карт. | <a href=\"%2$s\">Спрятать уведомление</a>"
 
 #: include/options.php:129
-#: include/options.php:147
+#: include/options.php:150
 #@ oiyamaps
 msgid "Oi Yandex Maps Settings"
 msgstr "Настройки Яндекс Карт"
@@ -297,4 +297,19 @@ msgstr "Настройки Яндекс Карт"
 #@ oiyamaps
 msgid "Oi Yandex Maps"
 msgstr "Яндекс Карты"
+
+#: include/options.php:163
+#@ oiyamaps
+msgid "Oi Yandex.Maps for WordPress Needs Your Support"
+msgstr "Oi Yandex.Maps необходима Ваша поддержка"
+
+#: include/options.php:164
+#@ oiyamaps
+msgid "If you like this plugin, you can support me and make a donation. But even if you don`t, you can use the plugin without any restrictions."
+msgstr "Если Вам нравится данный плагин, Вы можете поддержать меня материально, перечислив любую сумму. Но даже если Вы этого не сделаете, Вы можете пользоваться плагином без каких-либо ограничений."
+
+#: include/options.php:165
+#@ oiyamaps
+msgid "Your donation will help encourage and support the plugin`s continued development and better user support."
+msgstr "Ваш вклад поможет дальнейшему развитию плагина и обеспечит лучшую поддержку пользователей."
 
