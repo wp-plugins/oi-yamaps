@@ -2,7 +2,7 @@
 Contributors: Isaenko Alexei
 Tags: coordinates, maps, geolocation, location, placemark, yandex
 Requires at least: 3.2
-Tested up to: 4.0
+Tested up to: 4.1
 Stable tag: 2.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html 
