@@ -1,5 +1,6 @@
 === Oi Yandex.Maps for WordPress ===
 Contributors: Isaenko Alexei
+Donate link: https://money.yandex.ru/topup/card/carddetails.xml?receiver=41001112308777&skr_sum=350
 Tags: coordinates, maps, geolocation, location, placemark, yandex
 Requires at least: 3.2
 Tested up to: 4.1
@@ -10,17 +11,29 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 The plugin allows you to use Yandex.Maps on your site pages and put the placemarks on the map. Without an API key.
 
 == Description ==
+[<a target="_blank" href="https://wordpress.org/plugins/oi-yamaps/">English desc.</a>] Этот плагин использует API Яндекс.Карт для отображения карт на вашем сайте. 
+Плагин работает без использования API ключа.
+Вы можете указать координаты или адреса каких либо мест и поместить карту с меткой на любую страницу сайта.
+Вы можете добавить на страницу так много карт и так много меток на каждую карту, сколько хотите.
+Просто используйте шорткоды с параметрами. Так же можно использовать произвольные поля latitude и longitude, соответственно.
+Теперь вы можете использовать визуальный редактор шорткода.
+API загружается на страницу только если на ней выводится карта!
+
+<h4>Oi Yandex.Maps for WordPress необходима Ваша поддержка</h4>
+Если Вам нравится данный плагин, Вы можете поддержать меня материально, перечислив любую сумму. Но даже если Вы этого не сделаете, Вы можете пользоваться плагином без каких-либо ограничений.
+
+Ваш вклад поможет дальнейшему развитию плагина и обеспечит лучшую поддержку пользователей.
 
 This plugin uses <a target="_blank" href="http://maps.yandex.com/">Yandex.Map</a> API service to provide maps on your site.
-You can point coordinates or address of some places, and you'll get the map on your page.
+You can point coordinates or address of some places, and put your map to any page of your site.
 You can add so many maps on one page and so many placemarks on a map as you want.
-Just use shortcode with parameters. 
+Just use shortcode with parameters. You can use custom fields - 'latitude' and 'longitude'.
 Now you can use visual shortcode editor.
 
 API loads not on every page, but only when it's needed! 
 
 <h4>Oi Yandex.Maps for WordPress Needs Your Support</h4>
-If you like this plugin, you can support me and <a target="_blank" href="http://maps.yandex.com/">make a donation</a>. But even if you don't, you can use the plugin without any restrictions.
+If you like this plugin, you can support me and <a target="_blank" href="https://money.yandex.ru/topup/card/carddetails.xml?receiver=41001112308777&skr_sum=350">make a donation</a>. But even if you don't, you can use the plugin without any restrictions.
 Your donation will help encourage and support the plugin's continued development and better user support.
 
 == Installation ==
