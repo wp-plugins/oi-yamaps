@@ -4,7 +4,7 @@ Plugin Name: Oi Yandex.Maps for WordPress
 Plugin URI: http://www.easywebsite.ru/shop/oi-ya-maps
 Description: It just add the maps on your pages using Yandex.Maps. You can use shortcode and type the address or coordinates with many placemarks.
 Author: Alexei Isaenko
-Version: 2.2
+Version: 2.3
 Author URI: http://www.sh14.ru
 This plugin is Copyright 2012 Sh14.ru. All rights reserved.
 */
@@ -14,6 +14,7 @@ This plugin is Copyright 2012 Sh14.ru. All rights reserved.
 // Date: 21.07.2014 - 2.0 release
 // Date: 22.07.2014 - 2.1 fix html in placemark; center parametr added; curl enable check
 // Date: 16.09.2014 - 2.2 fix error when coordinates used; added shortcode button; localization
+// Date: 08.12.2014 - 2.3 fix showmap coordinates missing; map center; added custom image; placemarks;
 
 include "include/init.php";
 add_action('init', 'oi_yamaps');
@@ -76,7 +77,7 @@ function coordinates($address) // get coordinates of a given address
 		return implode(',',array_reverse(split(' ',trim(strip_tags($point[1])))));
 	}
 }
-function showyamap( $atts, $content ) // show block with the map on a page
+function showyamap( $atts, $content=null ) // show block with the map on a page
 {
 	$options = get_option( OIYM_PREFIX.'options' );
 	foreach($options as $k=>$v) // get variables from DB
@@ -96,14 +97,45 @@ function showyamap( $atts, $content ) // show block with the map on a page
 			'zoom'			=> $zoom,
 			'iconcontent'	=> '',
 			'placemark'		=> $placemark,
+			'iconimage'	=> $iconimage,
+			'iconsize'	=> '',
+			'iconoffset'	=> '',
+			'iconrect'	=> '',
+			'zoomcontrol'	=> 1,
+			'typeselector'	=> 1,
+			'maptools'		=> 1,
+			'trafficcontrol'=> 1,
+			'routeeditor'	=> 1,
 		), $atts, 'showyamap' ) );
 	$output = '';
+	$placemarks = array();
+
+	if( $zoomcontrol == 1 ||  $typeselector == 1 || $maptools == 1 || $trafficcontrol == 1 || $routeeditor == 1 )
+	{
+		if( $zoomcontrol == 1 ){$zoomcontrol = '.add("zoomControl")';}else{$zoomcontrol = '';}
+		if( $typeselector == 1 ){$typeselector = '.add("typeSelector")';}else{$typeselector = '';}
+		if( $maptools == 1 ){$maptools = '.add("mapTools")';}else{$maptools = '';}
+		if( $trafficcontrol == 1 ){$trafficcontrol = '.add("trafficControl")';}else{$trafficcontrol = '';}
+		if( $routeeditor == 1 ){$routeeditor = '.add("routeEditor")';}else{$routeeditor = '';}
+		$controls = '
+					myMap.controls' .
+						$zoomcontrol .
+						$typeselector.
+						$maptools .
+						$trafficcontrol .
+						$routeeditor .
+						';
+
+		';
+	}else
+	{
+		$controls = '';
+	}
+
 	foreach(oi_yamaps_defaults() as $k=>$v) // set empty variables from defaults
 	{
 		if($$k==''&&$k<>'author_link'){$$k = $v;}
 	} 
-	// if content for placemark given, make placemark stretch
-	if($iconcontent<>''){$placemark = str_replace('Icon','StretchyIcon',str_replace('Dot','',$placemark));}
 	$id = Ya_map_connected::$id; // set id of map block
 	if( $coordinates == '' ) // if coordinates not set...
 	{
@@ -117,44 +149,80 @@ function showyamap( $atts, $content ) // show block with the map on a page
 			if($latitude&&$longitude) // if we have coordinates...
 			{
 				$coordinates = $latitude . ',' . $longitude; // split theme
-			}
-		}
-		$center = trim($center);
-		if( $center <> '' ) // if we have a center, then...
-		{
-			if( !is_int( $center[0] ) ) // if it's not coordinates, then...
+			}else
 			{
-				$center = coordinates( $center ); // get coordinates
+				$coordinates = '';
 			}
-		}else // if center not set...
-		{
-			$center = $coordinates; // it is equal to coordinates
 		}
-	}else //  if we have coordinates, then...
+	}
+
+	if( $coordinates <> '' )
 	{
-		if( trim($center) == '' ) // set center if only it is empty
+		$placemarks[] = array(
+			'pid'			=> $id,
+			'header'		=> $header,
+			'body'			=> $body,
+			'footer'		=> $footer,
+			'hint'			=> $hint,
+			'coordinates'	=> $coordinates,
+			'iconcontent'	=> $iconcontent,
+			'placemark'		=> $placemark,
+			'iconimage'		=> $iconimage,
+			'iconsize'		=> '',
+			'iconoffset'	=> '',
+			'iconrect'		=> '',
+		);
+	}
+
+	// delete all not necessary simbols from $content
+	$record = false; // shortcode not started flag
+	$out7 = ''; // shortcode container
+	for($i=0;$i<strlen($content);$i++) // going thru $content
+	{
+		if($content[$i]=='['){$record = true;} // shortcode started
+		if($record==true){$out7 .= $content[$i];} // make shortcode string
+		if($content[$i]==']') // shortcode ended
 		{
-			$center = $coordinates; // it is equal to coordinates
+			$record = false; // set flag
+			$placemarks[] = json_decode( do_shortcode( $out7 ), true ); // add array of vars to $placemarks array
+			$out7 = '';
 		}
 	}
 	
-	if( $coordinates <> '' )
+	$center = trim($center);
+	if( $center <> '' ) // if we have a center, then...
 	{
-		$body = str_replace('"',"'",$body);
-		if($author_link==1)
-			$author_link = '<a class="ymaps-copyright-agreement-black author_link" href="http://easywebsite.ru/">' . __('OYM', 'oi_ya_maps') . '</a>';
-		//$content = '/* '.$content.' */';
-		
-		// delete all not necessary simbols from $content
-		$record = false;
-		$out7 = '';
-		for($i=0;$i<strlen($content);$i++)
+		if( !is_int( $center[0] ) ) // if it's not coordinates, then...
 		{
-			if($content[$i]=='['){$record = true;}
-			if($record==true){$out7 .= $content[$i];}
-			if($content[$i]==']'){$record = false;}
+			$center = coordinates( $center ); // get coordinates
 		}
-		$content = $out7;
+	}
+	
+	if( !empty( $placemarks ) )
+	{
+		// make placemarks string, for adding to code
+		$placemark_code = '';
+		$lat = array();
+		$lon = array();
+		foreach( $placemarks as $k=>$v )
+		{
+			if( $v['placemark'] == '' ) // set placemark if it's not...
+			{
+				$v['placemark'] = $placemark;
+			}
+			if( $center == '' )
+			{
+				list($lat[],$lon[]) = explode(',', $v['coordinates'] );
+			}
+			$placemark_code .= placemark_code( $v );
+		}
+		if( $center == '' )
+		{
+			$center = io_ya_map_center( $lat, $lon ); // center betwin all placemarks
+		}
+
+		if($author_link==1)
+			$author_link = '<a class="author_link" href="http://easywebsite.ru/">' . __('OYM', 'oi_ya_maps') . '</a>';
 
 		$output .= '
 		<div id="YMaps_'.$id.'" class="YMaps" style="width:'.$width.';height:'.$height.'">'. $author_link .'</div>
@@ -166,23 +234,8 @@ function showyamap( $atts, $content ) // show block with the map on a page
 						center: ['.$center.'],
 						zoom: '.$zoom.'
 					});
-					myMap.controls
-						.add("zoomControl")
-						.add("typeSelector")
-						.add("mapTools");
-						
-					myPlacemark_'.$id.' = new ymaps.Placemark(['.$coordinates.'], {
-						iconContent: "'.$iconcontent.'",
-						balloonContentHeader: "'.$header.'",
-						balloonContentBody: "'.$body.'",
-						balloonContentFooter: "'.$footer.'",
-						hintContent: "'.$hint.'"
-					},
-					{ preset: "'.$placemark.'" }
-					);
-
-					myMap.geoObjects.add(myPlacemark_'.$id.');
-				'.do_shortcode(($content)).'
+					'.$controls.'
+					'.$placemark_code.'
 			}
 		</script>
 		';
@@ -190,13 +243,102 @@ function showyamap( $atts, $content ) // show block with the map on a page
 		if($id==0) // if no maps on a page...
 		{
 			return '<script type="text/javascript" src="http://api-maps.yandex.ru/2.0/?load=package.full&lang=ru-RU"></script>'.
-				'<style>.YMaps {position: relative;} .YMaps .author_link {position: absolute;bottom: 9px; right:316px; z-index: 999;padding:0;display: table;line-height:12px;text-decoration:underline!important;}</style>'.
+				'<style>.YMaps {position: relative;} .YMaps .author_link {position: absolute;bottom: 9px; right:330px; z-index: 999;padding:0;display: table!important;line-height:12px;text-decoration:underline!important;white-space: nowrap!important;font-family: Verdana,serif!important;font-size: 10px!important;padding-left: 2px!important;color: #000!important;background-color: rgba(255, 255, 255, 0.7)!important;border:none;}</style>'.
 			"\n".$output; // ...and show the map
 		}else{return $output;} // show the map
 	}
 }
 add_shortcode('showyamap', 'showyamap');
-function placemark($atts)
+
+function io_ya_map_center( $lat, $lon )
+{
+	// searching center betwin all placemarks
+	$la = 0;
+	$lo = 0;
+	for($i=0;$i < sizeof( $lat );$i++)
+	{
+		if( $la == 0 )
+		{
+			$la_min = (float) $lat[$i];
+			$la_max = (float) $lat[$i];
+			$lo_min = (float) $lon[$i];
+			$lo_max = (float) $lon[$i];
+		}
+		$la = (float) $lat[$i];
+		$lo = (float) $lon[$i];
+		if( $la_min > $la ){$la_min = $la;}
+		if( $la_max < $la ){$la_max = $la;}
+		if( $lo_min > $lo ){$lo_min = $lo;}
+		if( $lo_max < $lo ){$lo_max = $lo;}
+		
+	}
+	$la = ( $la_min + $la_max ) / 2;
+	$lo = ( $lo_min + $lo_max ) / 2;
+	$center = $la . ',' . $lo;
+	return $center;
+}
+function oi_ya_map_brackets( $s )
+{
+	return str_replace( ')', ']', str_replace( '(','[',$s ) );
+}
+
+function placemark_code( $atts )
+{
+extract( shortcode_atts( array(
+		'pid'			=> '',
+		'header'		=> '',
+		'body'			=> '',
+		'footer'		=> '',
+		'hint'			=> '',
+		'coordinates'	=> '',
+		'iconcontent'	=> '',
+		'placemark'		=> '',
+		'iconimage'	=> '',
+		'iconsize'	=> '',
+		'iconoffset'	=> '',
+		'iconrect'	=> '',
+	), $atts ) );
+	
+	// if content for placemark given, make placemark stretch
+	if($iconcontent<>''){$placemark = str_replace('Icon','StretchyIcon',str_replace('Dot','',$placemark));}
+
+	if( $iconcontent ){$iconcontent = 'iconContent: "'.$iconcontent.'",';}
+	if( $header ){$header = 'balloonContentHeader: "'.$header.'",';}
+	if( $body ){$body = 'balloonContentBody: "'.$body.'",';}
+	if( $footer ){$footer = 'balloonContentFooter: "'.$footer.'",';}
+	if( $hint ){$hint = 'hintContent: "'.$hint.'"';}
+	
+	if( $iconimage ){$iconimage = 'iconImageHref: "'.$iconimage.'", ';}
+	if( $iconsize ){$iconsize = 'iconImageSize: '.oi_ya_map_brackets( $iconsize ).', ';}
+	if( $iconoffset ){$iconoffset = 'iconImageOffset: '.oi_ya_map_brackets( $iconoffset ).' ';}
+	if( $iconrect ){$iconrect = 'iconImageClipRect: '.oi_ya_map_brackets( $iconrect ).' ';}
+	if( $placemark && !$iconimage ){$placemark = 'preset: "'.$placemark.'"';}else{$placemark = '';}
+	
+	$output = '
+				myPlacemark_'.$pid.' = new ymaps.Placemark(['.$coordinates.'], {'.
+					$iconcontent.
+					$header.
+					$body.
+					$footer.
+					$hint.
+				'},
+				{'.
+					$placemark.
+					$iconimage.
+					$iconsize.
+					$iconoffset.
+					$iconrect.
+				'}
+				);
+				myMap.geoObjects.add(myPlacemark_'.$pid.');
+	
+	';
+	return $output;
+
+	
+}
+
+function placemark( $atts )
 {
 extract( shortcode_atts( array(
 		'address'		=> '',
@@ -206,31 +348,36 @@ extract( shortcode_atts( array(
 		'hint'			=> '',
 		'coordinates'	=> '',
 		'iconcontent'	=> '',
-		'placemark'		=> "twirl#blueDotIcon",
+		'placemark'		=> '',
+		'iconimage'	=> '',
+		'iconsize'	=> '',
+		'iconoffset'	=> '',
+		'iconrect'	=> '',
 	), $atts ) );
-	if($coordinates=='') // get coordinates, if it's not set
+	if( $coordinates == '' ) // get coordinates, if it's not set
 	{
-		$coordinates = coordinates($address);
+		$coordinates = coordinates( $address );
 	}
-	if($coordinates)
+	
+	if( $coordinates )
 	{
 		Ya_map_connected::$pid++;
 		$pid = Ya_map_connected::$pid;
-		$output = '
-					myPlacemark_'.$pid.' = new ymaps.Placemark(['.$coordinates.'], {
-						iconContent: "'.$iconcontent.'",
-						balloonContentHeader: "'.$header.'",
-						balloonContentBody: "'.$body.'",
-						balloonContentFooter: "'.$footer.'",
-						hintContent: "'.$hint.'"
-					},
-					{ preset: "'.$placemark.'" }
-					);
-
-					myMap.geoObjects.add(myPlacemark_'.$pid.');
-		
-		';
-		return $output;
+		$placemark = array(
+			'pid'			=> $pid,
+			'header'		=> $header,
+			'body'			=> $body,
+			'footer'		=> $footer,
+			'hint'			=> $hint,
+			'coordinates'	=> $coordinates,
+			'iconcontent'	=> $iconcontent,
+			'placemark'		=> $placemark,
+			'iconimage'	=> $iconimage,
+			'iconsize'	=> $iconsize,
+			'iconoffset'	=> $iconoffset,
+			'iconrect'	=> $iconrect,
+		);
+		return json_encode( $placemark );
 	}
 }
 add_shortcode('placemark', 'placemark');
