@@ -2,7 +2,7 @@
 /*
 Plugin Name: Oi Yandex.Maps for WordPress
 Plugin URI: http://www.easywebsite.ru/shop/oi-ya-maps
-Description: It just add the maps on your pages using Yandex.Maps. You can use shortcode and type the address or coordinates with many placemarks.
+Description: [<a target="_blank" href="https://wordpress.org/plugins/oi-yamaps/">English desc.</a>] Этот плагин просто вставляет Яндекс.Карты на страницы вашего сайта. Вы можете использовать шорткоды и произвольные поля, добавляя любое количество карт и меток на них.
 Author: Alexei Isaenko
 Version: 2.3
 Author URI: http://www.sh14.ru

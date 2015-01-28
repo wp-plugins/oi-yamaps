@@ -11,7 +11,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 The plugin allows you to use Yandex.Maps on your site pages and put the placemarks on the map. Without an API key.
 
 == Description ==
-[<a target="_blank" href="https://wordpress.org/plugins/oi-yamaps/">English desc.</a>] Этот плагин использует API Яндекс.Карт для отображения карт на вашем сайте. 
+Этот плагин использует API Яндекс.Карт для отображения карт на вашем сайте. 
 Плагин работает без использования API ключа.
 Вы можете указать координаты или адреса каких либо мест и поместить карту с меткой на любую страницу сайта.
 Вы можете добавить на страницу так много карт и так много меток на каждую карту, сколько хотите.
