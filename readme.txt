@@ -63,8 +63,10 @@ http://www.easywebsite.ru/shop/plugins-wordpress/oi-ya-maps
 
 == Changelog ==
 
+= 2.31 =
+* fix: short tags;
 = 2.3 =
-* fix showmap coordinates missing;
+* fix: showmap coordinates missing;
 * fix: fixed error when showmap doesn't contain coordinates;
 * new: now you can turn off map controls
 * new: added custom placemark image
