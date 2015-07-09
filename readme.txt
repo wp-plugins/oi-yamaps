@@ -4,13 +4,15 @@ Donate link: https://money.yandex.ru/topup/card/carddetails.xml?receiver=4100111
 Tags: coordinates, maps, geolocation, location, placemark, yandex
 Requires at least: 3.2
 Tested up to: 4.1
-Stable tag: 2.3
+Stable tag: 2.32
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html 
 
 The plugin allows you to use Yandex.Maps on your site pages and put the placemarks on the map. Without an API key.
 
 == Description ==
+<h4>!!! При обновлении до версии 2.31 произошла ошибка, следует произвести обновление до версии 2.32 !!!</h4>
+
 Этот плагин использует API Яндекс.Карт для отображения карт на вашем сайте. 
 Плагин работает без использования API ключа.
 Вы можете указать координаты или адреса каких либо мест и поместить карту с меткой на любую страницу сайта.
