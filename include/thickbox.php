@@ -1,9 +1,9 @@
-<?php 
+<?php
 function oi_yamaps_button() // Добавляем кнопку редактирования шорткода на страницу редактирования поста в админке
 {
 ?>
-<a href="#TB_inline?width=320&inlineId=insert_oi_yamaps" id="oi_yamaps_button" class="thickbox button" title="<?php _e("Yandex Map", "oiyamaps")?>"><?php _e("Yandex Map", "oiyamaps")?></a>
-<?php 
+<a href="#TB_inline?width=320&inlineId=insert_oi_yamaps" id="oi_yamaps_button" class="thickbox button" title="<?php _e("Yandex Map", "oiyamaps"); ?>"><?php _e("Yandex Map", "oiyamaps"); ?></a>
+<?php
 }
 
 function oi_yamaps_thickbox() // окно редактирования шорткода
@@ -147,7 +147,7 @@ jQuery(document).ready(function($) {
 	
 });
 </script>
-<?php 
+<?php
 }
 add_action('wp_ajax_get_cords', 'get_cords_callback');
 
