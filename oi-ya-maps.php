@@ -1,4 +1,4 @@
-<?php
+<?php 
 /*
 Plugin Name: Oi Yandex.Maps for WordPress
 Plugin URI: http://www.easywebsite.ru/shop/oi-ya-maps

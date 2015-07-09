@@ -1,4 +1,4 @@
-<?php
+<?php 
 function oiym_fields()
 {
 	$fields = array(
@@ -146,11 +146,11 @@ class OIYM_SettingsPage
 .block-left {float: left;width: 50%;}
 </style>
         <div class="wrap">
-            <?php screen_icon(); ?>
-            <h2><?php_e('Oi Yandex Maps Settings','oiyamaps')?></h2>
+            <?php  screen_icon(); ?>
+            <h2><?php _e('Oi Yandex Maps Settings','oiyamaps')?></h2>
 			<div class="block-left">
             <form method="post" action="options.php">
-            <?php
+            <?php 
                 // This prints out all hidden setting fields
                 settings_fields( OIYM_PREFIX.'option_group' );
                 submit_button(); 
@@ -160,14 +160,14 @@ class OIYM_SettingsPage
             </form>
 			</div>
 			<div class="block-left">
-			<h4><?php_e('Oi Yandex.Maps for WordPress Needs Your Support','oiyamaps')?></h4>
-<p><?php_e('If you like this plugin, you can support me and make a donation. But even if you don`t, you can use the plugin without any restrictions.','oiyamaps')?></p>
-<p><?php_e('Your donation will help encourage and support the plugin`s continued development and better user support.','oiyamaps')?></p>
+			<h4><?php _e('Oi Yandex.Maps for WordPress Needs Your Support','oiyamaps')?></h4>
+<p><?php _e('If you like this plugin, you can support me and make a donation. But even if you don`t, you can use the plugin without any restrictions.','oiyamaps')?></p>
+<p><?php _e('Your donation will help encourage and support the plugin`s continued development and better user support.','oiyamaps')?></p>
 <iframe frameborder="0" allowtransparency="true" scrolling="no" src="https://money.yandex.ru/embed/shop.xml?account=41001112308777&quickpay=shop&payment-type-choice=on&writer=seller&targets=Oi+Ya.Maps+for+WordPress+donation&targets-hint=&default-sum=350&button-text=03&mail=on&successURL=successURL=http%3A%2F%2Fwww.easywebsite.ru%2Fshop%2Fplugins-wordpress%2Foi-ya-maps%3Fmsg%3Dthanks" width="450" height="198"></iframe>
 
 			</div>
         </div>
-        <?php
+        <?php 
     }
 
     /**
